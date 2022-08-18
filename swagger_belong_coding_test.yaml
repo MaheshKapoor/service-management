@@ -1,0 +1,171 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: Mobile Service Management API
+
+# Describe your paths here
+paths:
+  # This is a path endpoint. Change it.
+  /serviceIds:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets all available service numbers.
+      operationId: "getAllServiceIds"
+      produces:
+        - "application/json"
+      # This is array of GET operation parameters:
+      parameters: []
+      # An example parameter that is in query and is required
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            title: ArrayOfServiceIds
+            type: array
+            items:
+              $ref: '#/definitions/ServiceId'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /serviceIds/{customerId}:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets all service numbers for specific customer.
+        Required path param as customerId to gets the service number objects for specific customer
+      operationId: "getCustomerServiceIds"
+      produces:
+        - "application/json"
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        -
+          name: customerId
+          in: path
+          description: Customer Identifier
+          required: true
+          type: string
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            title: ArrayOfServiceId
+            type: array
+            items:
+              $ref: '#/definitions/ServiceId'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /activateServiceId:
+    put:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Activates the specific number for a customer id.
+        Required body object with service number (to be activated) and customer Identifier (for whom service need to be activated)
+      operationId: "activateServiceId"
+      # This is array of GET operation parameters:
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        -
+          in: "body"
+          name: "data"
+          description: "available ServiceId and customer Identifier"
+          required: true
+          schema:
+            $ref: "#/definitions/ActivateServiceId"
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            title: ArrayOfServiceId
+            type: array
+            items:
+              $ref: '#/definitions/ActivatedServiceResponse'
+        400:
+          description: "Validation Error"
+        404:
+          description: "Avialable service Id is not found"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  ServiceId:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier representing a specific service id
+      serviceId:
+        type: string
+        description: Unique Service number.
+      status:
+        type: string
+        description: Status of the service number.
+      CustomerID:
+        type: string
+        description: Customer Idenifier.
+  ActivateServiceId:
+    type: object
+    properties:
+      customerId:
+        type: string
+        description: Customer identifier
+      serviceId:
+        type: string
+        description: Unique Service number.
+  ActivatedServiceResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier representing a specific service id
+      serviceId:
+        type: string
+        description: Unique Service number.
+      status:
+        type: string
+        description: Status of the service number.
+      CustomerID:
+        type: string
+        description: Customer Idenifier.
+  Error:
+    type: object
+    properties:
+      timestamp:
+        type: string
+      message:
+        type: string
+      status:
+        type: string
+      error:
+        type: string
+      path:
+        type: string
