@@ -32,7 +32,7 @@ public class ServiceController {
     }
 
     // Get all service numbers for a customer
-    @GetMapping("/serviceIds/{customerId}")
+    @GetMapping("/customerServiceIds/{customerId}")
     List<Service> getCustomerServices(@PathVariable @NotBlank @Size(min=10 , max = 10) String customerId) throws ExceptionHandler {
 
         return serviceHelper.getCustomerServices(customerId);

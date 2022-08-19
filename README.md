@@ -11,7 +11,7 @@
 
 3. This project has following services:
     1. GET /serviceIds - To fetch all services in InMemory 
-    2. GET /serviceIds/{customerId} - To fetch all services of a customer
+    2. GET /customerServiceIds/{customerId} - To fetch all services of a customer
     3. PUT /activateServiceId - To activate an available service number for a customer
 
 4. Environment:

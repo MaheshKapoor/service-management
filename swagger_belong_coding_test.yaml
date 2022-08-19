@@ -40,7 +40,7 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
-  /serviceIds/{customerId}:
+  /customerServiceIds/{customerId}:
     # This is a HTTP operation
     get:
       # Describe this verb here. Note: you can use markdown

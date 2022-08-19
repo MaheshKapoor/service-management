@@ -85,7 +85,7 @@ public class serviceControllerTest {
     public void CustomerServiceList_200() throws Exception {
 
 
-        mockMvc.perform(get("/serviceIds/2050878561")
+        mockMvc.perform(get("/customerServiceIds/2050878561")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
