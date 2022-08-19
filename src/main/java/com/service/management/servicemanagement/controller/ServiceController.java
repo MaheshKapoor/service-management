@@ -25,21 +25,21 @@ public class ServiceController {
     ServiceHelper serviceHelper;
 
     // Get all service numbers
-    @GetMapping("/serviceIds")
+    @GetMapping("/services")
     List<Service> getServiceIds() throws ExceptionHandler {
 
         return serviceHelper.getAllServiceIds();
     }
 
     // Get all service numbers for a customer
-    @GetMapping("/customerServiceIds/{customerId}")
+    @GetMapping("/customer-services/{customerId}")
     List<Service> getCustomerServices(@PathVariable @NotBlank @Size(min=10 , max = 10) String customerId) throws ExceptionHandler {
 
         return serviceHelper.getCustomerServices(customerId);
     }
 
     // Activate a Service for a customer
-    @PutMapping("/activateServiceId")
+    @PutMapping("/activate-service")
     Service serviceActivation(@RequestBody @Valid ActivateServiceId activateServiceId) throws ExceptionHandler {
 
         return serviceHelper.activateServiceId(activateServiceId);

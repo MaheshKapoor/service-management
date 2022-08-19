@@ -10,9 +10,9 @@
     5. Now below endpoints should be aviable in http://localhost:8080 
 
 3. This project has following services:
-    1. GET /serviceIds - To fetch all services in InMemory 
-    2. GET /customerServiceIds/{customerId} - To fetch all services of a customer
-    3. PUT /activateServiceId - To activate an available service number for a customer
+    1. GET /services: - To fetch all services in InMemory 
+    2. GET /customer-services/{customerId} - To fetch all services of a customer
+    3. PUT /activate-service - To activate an available service number for a customer
 
 4. Environment:
     1. Java8

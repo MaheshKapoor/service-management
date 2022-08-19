@@ -32,7 +32,7 @@ public class serviceControllerTest {
                 "\"serviceId\":\t\"\"\n" +
                 "}";
 
-        mockMvc.perform(put("/activateServiceId")
+        mockMvc.perform(put("/activate-service")
                 .content(requestJson)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -48,7 +48,7 @@ public class serviceControllerTest {
                 "\"serviceId\":\t\"0426017732\"\n" +
                 "}";
 
-        mockMvc.perform(put("/activateServiceId")
+        mockMvc.perform(put("/activate-service")
                 .content(requestJson)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -63,7 +63,7 @@ public class serviceControllerTest {
                 "\"serviceId\":\t\"0426017706\"\n" +
                 "}";
 
-        mockMvc.perform(put("/activateServiceId")
+        mockMvc.perform(put("/activate-service")
                 .content(requestJson)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -75,7 +75,7 @@ public class serviceControllerTest {
     public void ServiceList_200() throws Exception {
 
 
-        mockMvc.perform(get("/serviceIds")
+        mockMvc.perform(get("/services")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
@@ -85,7 +85,7 @@ public class serviceControllerTest {
     public void CustomerServiceList_200() throws Exception {
 
 
-        mockMvc.perform(get("/customerServiceIds/2050878561")
+        mockMvc.perform(get("/customer-services/2050878561")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());

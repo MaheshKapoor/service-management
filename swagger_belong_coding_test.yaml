@@ -11,7 +11,7 @@ info:
 # Describe your paths here
 paths:
   # This is a path endpoint. Change it.
-  /serviceIds:
+  /services:
     # This is a HTTP operation
     get:
       # Describe this verb here. Note: you can use markdown
@@ -40,7 +40,7 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
-  /customerServiceIds/{customerId}:
+  /customer-services/{customerId}:
     # This is a HTTP operation
     get:
       # Describe this verb here. Note: you can use markdown
@@ -75,7 +75,7 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /activateServiceId:
+  /activate-service:
     put:
       # Describe this verb here. Note: you can use markdown
       description: |
